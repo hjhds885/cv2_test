@@ -1,6 +1,6 @@
 import streamlit as st
 import cv2
-from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
+from streamlit_webrtc import VideoTransformerBase, webrtc_streamer, WebRtcMode
 
 class VideoTransformer(VideoTransformerBase):
     def transform(self, frame):
