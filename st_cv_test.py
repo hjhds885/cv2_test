@@ -1,31 +1,16 @@
 import streamlit as st
-
 import cv2
-import os
+from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
-def set_camera_permissions():
-    # カメラデバイスのパスを指定
-    camera_device = '/dev/video0'
+class VideoTransformer(VideoTransformerBase):
+    def transform(self, frame):
+        # フレームをRGBに変換
+        img = frame.to_ndarray(format="bgr")
+        # OpenCVで処理を行うことも可能 (例: imgをグレースケールに変換)
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        return img
 
-    # 666権限を設定
-    command = f'sudo chmod 666 {camera_device}'
+st.title("Webカメラの認識デモ")
 
-    # コマンドを実行
-    os.system(command)
-
-# 関数を呼び出して権限を設定
-set_camera_permissions()
-
-st.title("Streamlit + OpenCV Sample")
-
-cap = cv2.VideoCapture(0)
-st.header("Image")
-image_placeholder = st.empty()
-
-while True:
-    ret, frame = cap.read()
-    if ret:
-        image_placeholder.image(frame, channels="BGR")
-
-cap.release()
-#cv2.destroyAllWindows()
+# WebRTCを使用してカメラにアクセス
+webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
