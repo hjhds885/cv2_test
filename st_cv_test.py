@@ -16,6 +16,9 @@ st.title("Webカメラの認識デモ")
 st.header("Webcam Stream")
 webrtc_ctx=webrtc_streamer(
     key="example",
+    desired_playing_state=True, 
+    mode=WebRtcMode.SENDRECV,
     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+    media_stream_constraints={"video": True, "audio": False},
     video_transformer_factory=VideoTransformer
 )
