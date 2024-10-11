@@ -9,7 +9,9 @@ st.header("Image")
 image_placeholder = st.empty()
 while True:
     ret, frame = cap.read()
-    #cv2.imshow('frame', frame)
+    if not ret:
+        st.warning("Could not read frame. Check camera connectivity.")
+        break
     image_placeholder.image(frame, channels="BGR")
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
