@@ -14,7 +14,8 @@ if st.button("Start Streaming"):
             image_placeholder.image(frame, channels="BGR")
         #if cv2.waitKey(1) & 0xFF == ord('q'):
         # Streamlitのst.stop()を使ってストリームを終了できるようにする
-        if st.button("Stop Streaming"):
+        # ストリーミングを止めるボタンに一意のキーを指定
+        if st.button("Stop Streaming", key="stop_button"):
             break
             
 
