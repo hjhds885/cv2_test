@@ -12,11 +12,7 @@ if st.button("Start Streaming"):
         ret, frame = cap.read()
         if ret:
             image_placeholder.image(frame, channels="BGR")
-        #if cv2.waitKey(1) & 0xFF == ord('q'):
-        # Streamlitのst.stop()を使ってストリームを終了できるようにする
-        # ストリーミングを止めるボタンに一意のキーを指定
-        if st.button("Stop Streaming", key="stop_button"):
-            break
+        
             
 
 cap.release()
