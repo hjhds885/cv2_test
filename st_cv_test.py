@@ -13,4 +13,9 @@ class VideoTransformer(VideoTransformerBase):
 st.title("Webカメラの認識デモ")
 
 # WebRTCを使用してカメラにアクセス
-webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
+st.header("Webcam Stream")
+webrtc_ctx=webrtc_streamer(
+    key="example",
+    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+    video_transformer_factory=VideoTransformer
+)
