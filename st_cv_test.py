@@ -9,6 +9,10 @@ class VideoTransformer(VideoTransformerBase):
     def recv(self, frame):   
         try:
             self.frame = frame.to_ndarray(format="bgr24")
+            img = frame.to_ndarray(format="bgr24")
+
+            #img = cv2.cvtColor(cv2.Canny(img, self.threshold1, self.threshold2), cv2.COLOR_GRAY2BGR)
+            frame = av.VideoFrame.from_ndarray(img, format="bgr24")
         except AttributeError as e:
             st.error(f"Error converting frame: {e}")
         return frame
