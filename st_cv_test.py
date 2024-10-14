@@ -1,8 +1,9 @@
 import streamlit as st
 import cv2
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer, WebRtcMode
+import av
 
-class VideoTransformer(VideoTransformerBase):
+class VideoProcessor:
     def __init__(self):
         self.frame = None
 
@@ -28,7 +29,7 @@ webrtc_ctx=webrtc_streamer(
     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
     media_stream_constraints={"video": True, "audio": False},
     #video_transformer_factory=VideoTransformer 廃止
-    video_processor_factory=VideoTransformer,
+    video_processor_factory=VideoProcessor,
 )
 if webrtc_ctx.state.playing:
     st.write("WebRTC is playing")
