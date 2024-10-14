@@ -7,7 +7,10 @@ class VideoTransformer(VideoTransformerBase):
         self.frame = None
 
     def recv(self, frame):   
-        self.frame = frame.to_ndarray(format="bgr24")
+        try:
+            self.frame = frame.to_ndarray(format="bgr24")
+        except AttributeError as e:
+            st.error(f"Error converting frame: {e}")
         return frame
 
 st.title("Webカメラの認識デモ")
@@ -23,3 +26,7 @@ webrtc_ctx=webrtc_streamer(
     #video_transformer_factory=VideoTransformer 廃止
     video_processor_factory=VideoTransformer,
 )
+if webrtc_ctx.state.playing:
+    st.write("WebRTC is playing")
+else:
+    st.write("WebRTC is not playing")
