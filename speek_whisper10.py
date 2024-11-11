@@ -7,6 +7,8 @@ import whisper
 import librosa
 import ffmpeg
 
+AudioSegment.converter = "/usr/bin/ffmpeg"
+
 def save_audio(audio_segment: AudioSegment, base_filename: str) -> None:
     """
     Save an audio segment to a .wav file.
