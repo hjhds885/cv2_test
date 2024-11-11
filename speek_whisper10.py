@@ -7,7 +7,8 @@ import whisper
 import librosa
 import ffmpeg
 
-AudioSegment.converter = "/usr/bin/ffmpeg"
+#AudioSegment.converter = "/usr/bin/ffmpeg"
+pydub.AudioSegment.converter = "/usr/bin/ffmpeg.exe"  #'c:\\FFmpeg\\bin\\ffmpeg.exe'
 
 def save_audio(audio_segment: AudioSegment, base_filename: str) -> None:
     """
