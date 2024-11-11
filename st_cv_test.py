@@ -5,6 +5,7 @@ from pydub import AudioSegment
 import queue, pydub, tempfile,  os, time
 import whisper
 import librosa
+import ffmpeg
 
 def save_audio(audio_segment: AudioSegment, base_filename: str) -> None:
     """
