@@ -5,6 +5,7 @@ from pydub import AudioSegment
 import queue, pydub, tempfile,  os, time
 import whisper
 import librosa
+import torch.classes
 
 #AudioSegment.converter = "/usr/bin/ffmpeg"
 #pydub.AudioSegment.converter = "/usr/bin/ffmpeg"  #'c:\\FFmpeg\\bin\\ffmpeg.exe'
