@@ -4,4 +4,3 @@ streamlit-webrtc==0.47.9
 openai-whisper==20240930
 pydub==0.25.1
 librosa==0.10.2.post1
-ffmpeg-python==0.2.0
