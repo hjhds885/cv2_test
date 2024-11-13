@@ -203,12 +203,12 @@ def app_sst(
     """
 
     audio_receiver_size = st.sidebar.slider(
-        "audio_receiver_size(処理音声フレーム数。デフォルト512):", 
-        min_value=64, max_value=1024, value=512, step=64
+        "audio_receiver_size(処理音声フレーム数。デフォルト128):", 
+        min_value=64, max_value=1024, value=128, step=64
     )
     energy_threshold = st.sidebar.slider(
         "energy_threshold(無音エネルギーしきい値。デフォルト2000):", 
-        min_value=100, max_value=5000, value=2000, step=100
+        min_value=100, max_value=4000, value=2000, step=100
     )
     amp_threshold = st.sidebar.slider(
         "amp_threshold(無音最大振幅しきい値。デフォルト0.3):", 
@@ -217,12 +217,12 @@ def app_sst(
     # 無音を検出するための閾値 0.01 0.05 1.00以下
         #amp_threshold = 0.30  #0.05
     silence_frames_threshold = st.sidebar.slider(
-        "silence_frames_threshold(トリガー用連続無音フレーム数。デフォルト100):", 
-        min_value=20, max_value=300, value=60, step=20
+        "silence_frames_threshold(トリガー用連続無音フレーム数。デフォルト60):", 
+        min_value=20, max_value=100, value=60, step=10
     )
     #60がBest,デフォルト100
     timeout = st.sidebar.slider(
-        "timeout(フレームを取得するためのタイムアウト。デフォルト3秒):", 
+        "timeout(フレームを取得するためのタイムアウト。デフォルト1秒):", 
         min_value=1, max_value=3, value=1, step=1
     )
     #stで使う変数初期設定
